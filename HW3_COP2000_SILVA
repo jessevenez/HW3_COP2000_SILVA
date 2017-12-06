@@ -1,0 +1,75 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+void membership_calculation(float);
+int getUserInput();
+bool isMenuChoiceValid(int);
+
+int main()
+{
+    const int GOLD_LEVEL    = 1;
+    const int SILVER_LEVEL  = 2;
+    const int BRONZE_LEVEL  = 3;
+    const float GOLD_APR      =0.01;
+    const float SILVER_APR    =0.02;
+    const float BRONZE_APR    =0.04;
+    
+    
+    switch(getUserInput())
+    {
+    case(GOLD_LEVEL):
+        {
+            membership_calculation (GOLD_APR);
+        }
+    case(SILVER_LEVEL):
+        {
+            membership_calculation (SILVER_APR);
+        }
+    case(BRONZE_LEVEL):
+        {
+            membership_calculation (BRONZE_APR);
+        }
+
+    }
+    return 0;
+}
+
+void membership_calculation (float membership_apr)
+{
+  int membership_cost_per_year = 0;
+  const int min_years           = 1;
+  const int max_years           = 10;
+  const int membership_cost   = 1200;
+  
+  
+  for (int current_year = 1; current_year == 10; current_year++)
+  { 
+      cout << "Years" << current_year << membership_cost_per_year << endl;
+      membership_cost_per_year==membership_cost*(1+current_year*membership_apr);
+  
+  }
+ 
+}
+
+int getUserInput()
+{
+    int menu_input = 0;
+    input:
+    cout << "What membership level are you:\n";
+    cout << "Press 1 for Gold Membership\n";
+    cout << "Press 2 for Silver Membership\n";
+    cout << "Press 3 for Bronze Membership\n";
+    cin >> menu_input;
+    
+    if(isMenuChoiceValid(menu_input)){
+     return menu_input;    
+    }
+    else goto input;
+}
+
+bool isMenuChoiceValid(int menu_input)
+{
+    if(menu_input > 3 || menu_input < 1) return false;
+    else return true;
+}
